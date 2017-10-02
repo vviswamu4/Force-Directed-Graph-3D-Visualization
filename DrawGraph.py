@@ -1,4 +1,5 @@
 import sys
+#modify this to add networkx installation directory
 sys.path.append("C:\PYTHON\lib\site-packages")
 
 import networkx as nx
@@ -47,7 +48,7 @@ class DrawGraph(object):
     def getPositionStream(self):
         positionStream = ''
         self.G.add_weighted_edges_from(self.edges)
-        pos = nx.spring_layout(self.G, dim=2, weight='weight', scale=3)
+        pos = nx.spring_layout(self.G, dim=3, weight='weight', scale=3)
         for elem in pos:
             for val in pos[elem]:
                 positionStream += str(val) + ";"    
@@ -61,8 +62,8 @@ class DrawGraph(object):
 
 if __name__ == "__main__":
     dg = DrawGraph()
-    print(dg.getNameStream("nodes.csv"))
-    print(dg.getLinkStream("links.csv"))
+    print(dg.getNameStream("data/nodes.csv"))
+    print(dg.getLinkStream("data/links.csv"))
     print(dg.getPositionStream())
     #print(G.edges())
     #w=nx.get_edge_attributes(G, 'weight')
